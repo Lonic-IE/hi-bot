@@ -31,11 +31,12 @@ async def on_ready():
     # Pegar id do canal
     channel = bot.get_channel(id_canal)
     if channel:
-        message_exits = await channel.history(limit=1).flatten()
-        print(message_exits)
+        message_exits = channel.history(limit=1)
+        if message_exits:
+            print(message_exits)
 
     # Enviar mensagem de boas-vindas ao canal especificado com o botão
-        if channel:
+
             message_standard = (
                 "🌟 **Bem-vindo ao serviço da XX!** 🌟\n\n"
                 "Estamos aqui para ajudar você a alcançar o rank dos seus sonhos! 🚀 "
@@ -45,7 +46,6 @@ async def on_ready():
                 "Desenvolvimento do bot © Lonic IE. Todos os direitos reservados.\n\n"
                 "Para mais informações, acesse: https://github.com/Lonic-IE."
             )
-
             view = WelcomeView()  # Criação da view com o botão
             await channel.send(message_standard, view=view)
         else:
