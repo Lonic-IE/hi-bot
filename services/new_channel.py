@@ -17,14 +17,14 @@ class WelcomeView(View):
             return
 
         # Obtém os cargos Staff e Administrador
-        staff_role = discord.utils.get(interaction.guild.roles, name="Staff")
-        admin_role = discord.utils.get(interaction.guild.roles, name="Administrador")
-        coach_role = discord.utils.get(interaction.guild.roles, name="Coach")
+        staff_role = discord.utils.get(interaction.guild.roles, name="CEO")
+        admin_role = discord.utils.get(interaction.guild.roles, name="Comercial")
+        coach_role = discord.utils.get(interaction.guild.roles, name="Bot")
 
         # Crie um novo canal apenas para o usuário
         category = channel.category
         new_channel = await channel.guild.create_text_channel(
-            name=f'coaching-{interaction.user.name.lower()}',
+            name=f'teste-{interaction.user.name.lower()}',
             category=category,
             overwrites={
                 interaction.guild.default_role: discord.PermissionOverwrite(read_messages=False),
