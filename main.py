@@ -30,30 +30,28 @@ async def on_ready():
 
     # Pegar id do canal
     channel = bot.get_channel(id_canal)
+    #Deletar mensagem para atualizar
     if channel:
        async for message in channel.history(limit=1):
             last_message = message
-            
             if last_message:
                 await last_message.delete()
-            
-            if not last_message:
-                message_standard = (
-                    "🌟 **Bem-vindo ao serviço da XX!** 🌟\n\n"
-                    "Estamos aqui para ajudar você a alcançar o rank dos seus sonhos! 🚀 "
-                    "text "
-                    "text!\n\n"
-                    "**Entre em contato e comece sua jornada para o sucesso!** 🎮✨\n\n"
-                    "Desenvolvimento do bot © Lonic IE. Todos os direitos reservados.\n\n"
-                    "Para mais informações, acesse: https://github.com/Lonic-IE."
-                )
-                view = WelcomeView()  # Criação da view com o botão
-                await channel.send(message_standard, view=view)
-                # Enviar mensagem de boas-vindas ao canal especificado com o botão
-
     else:
         print(f'Canal {id_canal} não encontrado.')
-
+    #Mensagem padrão
+    message_standard = (
+                "🌟 **Bem-vindo ao serviço da XX!** 🌟\n\n"
+                "Estamos aqui para ajudar você a alcançar o rank dos seus sonhos! 🚀 "
+                "text "
+                "text!\n\n"
+                "**Entre em contato e comece sua jornada para o sucesso!** 🎮✨\n\n"
+                "Desenvolvimento do bot © Longia. Todos os direitos reservados.\n\n"
+                "Para mais informações, acesse: https://github.com/Lonic-IE."
+            )
+    view = WelcomeView()  # Criação da view com o botão
+    await channel.send(message_standard, view=view)
+            # Enviar mensagem de boas-vindas ao canal especificado com o botão
+    
 @bot.command(name="sobre")
 async def message_sobre(ctx):
     hi_bot_description = (
