@@ -23,9 +23,10 @@ class WelcomeView(View):
 
         # Crie um novo canal apenas para o usuário
         category = channel.category
-        i=int
+        count_number_channel=int
+        count_number_channel=count_number_channel+1
         new_channel = await channel.guild.create_text_channel(
-            name=f'sv-{interaction.user.name.lower(),'#',i}',
+            name=f'sv-{interaction.user.name.lower(),'#',count_number_channel}',
             category=category,
             overwrites={
                 interaction.guild.default_role: discord.PermissionOverwrite(read_messages=False),
@@ -37,6 +38,5 @@ class WelcomeView(View):
         )
 
         messages = "BOT EM DESENVOLVIMENTO"
-        i=i+1
         await new_channel.send(messages)
         await interaction.response.send_message(f"Seu canal foi criado! Acesse ele para ter mais informações: {new_channel.mention}", ephemeral=True)
